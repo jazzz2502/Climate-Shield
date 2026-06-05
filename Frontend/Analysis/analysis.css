@@ -600,11 +600,16 @@ button:hover {
 
 .risk-card {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
 }
 
-.risk-card p {
+.risk-card > p:not(.risk-label):not(.risk-description) {
   font-size: 1.8rem;
   font-weight: 800;
+  margin: 0;
 }
 
 .flood {
@@ -1037,8 +1042,8 @@ button:hover {
 /* MULTI-RISK GRID (5 CARDS) */
 .risk-grid-five {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
   margin-bottom: 22px;
 }
 
@@ -1561,4 +1566,58 @@ body.light-mode .message-box.is-success {
     background: #dcfce7;
     border: 2px solid #22c55e;
     color: #166534;
+}
+
+/* Risk label — severity pill */
+.risk-card .risk-label {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 6px 0 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  width: auto;
+  max-width: 100%;
+}
+
+.risk-card .risk-label.low {
+  color: #1D9E75;
+  background: rgba(29, 158, 117, 0.12);
+}
+
+.risk-card .risk-label.moderate {
+  color: #EF9F27;
+  background: rgba(239, 159, 39, 0.12);
+}
+
+.risk-card .risk-label.high {
+  color: #E05C1A;
+  background: rgba(224, 92, 26, 0.12);
+}
+
+.risk-card .risk-label.critical {
+  color: #E24B4A;
+  background: rgba(226, 75, 74, 0.14);
+}
+
+/* Risk description — plain-language guidance text */
+.risk-card .risk-description {
+  font-size: 0.78rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 4px 0 0;
+  padding: 0 2px;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+body.light-mode .risk-card .risk-description {
+  color: rgba(30, 41, 59, 0.72);
 }
